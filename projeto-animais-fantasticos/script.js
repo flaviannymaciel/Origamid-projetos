@@ -1,18 +1,17 @@
-const imagens = document.getElementsByTagName('img');
-console.log(imagens);
+const tabMenu = document.querySelectorAll('.jsTabMenu li');
+const tabContent = document.querySelectorAll('.jsTabContent section');
 
-const imagens2 = document.querySelectorAll('img');
+if (tabMenu.length && tabContent.length) {
+  function activeTab(index) {
+    tabContent.forEach((section) => {
+      section.classList.remove('ativo');
+    });
+    tabContent[index].classList.add('ativo');
+  }
 
-console.log(imagens2);
-
-const imagem = document.querySelectorAll('[src^="imagem"]');
-console.log(imagem);
-
-const linkInterno = document.querySelector('[href^="#"]');
-console.log(linkInterno);
-
-const primeiroH2 = document.querySelector('.animais-descricao h2');
-console.log(primeiroH2);
-
-const ultimoP = document.querySelectorAll('p');
-console.log(ultimoP[24]);
+  tabMenu.forEach((itemMenu, index) => {
+    itemMenu.addEventListener('click', () => {
+      activeTab(index);
+    });
+  });
+}
