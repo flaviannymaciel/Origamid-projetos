@@ -140,6 +140,7 @@ body {
   margin-top: 2rem;
   margin-bottom: 0.5rem;
   color: #e54;
+  /* cursor: pointer; */
 }
 
 .faq-lista dt::before {
@@ -155,6 +156,35 @@ body {
   font-family: Helvetica, Arial;
   margin-bottom: 0.5rem;
   margin-left: 30px;
+}
+
+.js-accordion dd {
+  display: none;
+}
+
+.js-accordion dt::after {
+  content: '⬎';
+  margin-left: 10px;
+}
+
+.js-accordion dt.ativo::after {
+  content: '⬏';
+}
+
+.js-accordion dd.ativo {
+  display: block;
+  animation: slideDown .5s forwards;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    max-height: 200px;
+  }
 }
 
 .mapa {
@@ -231,6 +261,7 @@ body {
   display: block;
   animation: show 0.5s forwards;
 }
+/* forwards siginifica que a animação acaba no 'to' sem voltar o ciclo from-to */
 
 @keyframes show {
   from {
