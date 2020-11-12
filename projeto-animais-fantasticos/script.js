@@ -64,3 +64,20 @@ function initScrollSuave() {
     link.addEventListener('click', scrollToSection);
   });
 }
+//Animação no Scroll
+function initAnimaScroll() {
+  const sections = document.querySelectorAll('.js-scroll');
+  const windowMetade = window.innerHeight * 0.6;
+
+  function animaScroll() {
+    sections.forEach((section) => {
+      const sectionTop = section.getBoundingClientRect().top - windowMetade;
+      if (sectionTop < 0) {
+        section.classList.add('ativo');
+      }
+    });
+  }
+  animaScroll();
+  window.addEventListener('scroll', animaScroll);
+}
+initAnimaScroll();
