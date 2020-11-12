@@ -26,7 +26,7 @@ initTabNav();
 //Accordion List
 function initAccordion() {
   const accordionList = document.querySelectorAll('.js-accordion dt');
-  const activeClass = 'ativo'
+  const activeClass = 'ativo';
 
   function activeAccordion() {
     this.classList.toggle(activeClass);
@@ -35,7 +35,32 @@ function initAccordion() {
   accordionList.forEach((item) => {
     item.addEventListener('click', activeAccordion);
   });
-
-  addAtivo();
 }
 initAccordion();
+
+function initScrollSuave() {
+  const linksInternos = document.querySelectorAll('.js-menu a[href^="#"]');
+
+  function scrollToSection(event) {
+    event.preventDefault();
+    const href = event.currentTarget.getAttribute('href');
+    const section = document.querySelector(href);
+    // método para scroll
+    section.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
+  }
+
+  //Forma alternativa de scroll
+  // pega o topo de cada section
+  // const topo = section.offsetTop;
+  // window.scrollTo({
+  //   top: topo,
+  //   behavior: 'smooth'
+  // });
+
+  linksInternos.forEach((link) => {
+    link.addEventListener('click', scrollToSection);
+  });
+}
