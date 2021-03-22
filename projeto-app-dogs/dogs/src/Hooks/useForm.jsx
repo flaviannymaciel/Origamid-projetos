@@ -16,6 +16,7 @@ const useForm = (type) => {
     if (value.length === 0) {
       setError('Preencha um valor.');
       return false;
+      // como type é uma string, é necessário acessar o objeto types[type ao invés de types.type]
     } else if (types[type] && !types[type].regex.test(value)) {
       setError(types[type].message);
       return false;
